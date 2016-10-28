@@ -1,0 +1,101 @@
+.btn {
+	font-size: $font-size-base;
+	border-width: 2px;
+    padding: 10px 18px;
+	position: relative;
+    font-weight: bold;
+    @media (max-width: $screen-xs-max) {
+        padding: 18px 23px;
+    }
+
+	@include box-shadow(none);
+
+    &.btn-lg {
+        padding: 18px 45px;
+    }
+    &.btn-small {
+        font-size: $font-size-small;
+    }
+
+    &.btn-brg-primary,
+    &.btn-brg-secondary {
+        &:after {
+            display: block;
+            content: '3';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid $brand-primary;
+            font-family: "brightergy-icons";
+            font-size: 13px;
+            padding-left: 2px;
+            line-height: 15px;
+
+            margin-left: -10px;
+            bottom: -10px;
+            left: 50%;
+        }
+    }
+
+	&.btn-brg-white {
+        width: 230px;
+        height: 69px;
+		color: #fff;
+        border-width: 0;
+        padding: 18px 10px;
+        position: relative;
+		&:after, &:before{
+            content: ' ';
+            display: block;
+            margin: 0;
+            left: 0; top: 0; bottom: 0;
+            border: 0;
+            border-radius: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url(../img/btn-white-bg-sprite.png) no-repeat top;
+            @include transition(opacity 0.2s ease-in-out);
+		}
+        &:before {
+            opacity: 1;
+        }
+        &:after {
+            background-position: bottom;
+            opacity: 0;
+        }
+        &:hover {
+            &:before { opacity: 0; }
+            &:after { opacity: 1; }
+        }
+	}
+
+	&.btn-brg-primary {
+		border-color: $brand-primary;
+		color: $brand-primary;
+        background: #fff;
+        @include transition(background-color 0.2s ease-in-out);
+		&:after{
+            border-color: $brand-primary;
+            background: #fff;
+		}
+        &:hover {
+            background: lighten($brand-primary, 35%);
+        }
+	}
+
+    &.btn-brg-secondary {
+        border-color: $brand-secondary;
+        color: $brand-secondary;
+        background: #fff;
+        @include transition(background-color 0.2s ease-in-out);
+        &:after{
+            border-color: $brand-secondary;
+            background: #fff;
+        }
+        &:hover {
+            background: lighten($brand-secondary, 35%);
+        }
+    }
+}

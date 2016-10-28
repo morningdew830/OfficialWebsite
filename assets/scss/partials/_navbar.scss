@@ -1,0 +1,288 @@
+.navbar {
+	margin: 0;
+	min-height: 80px;
+	position: fixed;
+
+    // fix issue for hide element
+    // for more info: http://stackoverflow.com/questions/17068361/chrome-positionfixed-inside-positionabsolute-breaking-with-iframe-video
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+
+    @media (max-width: $screen-xs-max) {
+        position: absolute;
+    }
+	top: 0;
+	width: 100%;
+
+    /*@include transition-property(background-color);
+    @include transition-duration(.2s);*/
+
+    .navbar-header {
+        position: relative;
+    }
+    @media (max-width: $screen-xs-max) {
+        position: static;
+        background: rgba(255,255,255,1);
+        border-color: $gray-light;
+        .navbar-brand {
+            background-position: top left !important;
+            width: 23px !important;
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .navbar-nav > li > a {
+            color: $text-color;
+        }
+        .hamburger-bar {
+            background: $text-color;
+        }
+    }
+
+    @media (max-width: $screen-sm-max) {
+        .container {
+            width: 100%;
+            .navbar-brand {
+                margin: 27px auto 23px 15px;
+            }
+        }
+    }
+
+    .navbar-nav {
+        margin: 0;
+		> li {
+            position: static;
+            @media (max-width: $screen-xs-max) {
+                border-top: 1px solid $gray-lighter;
+                background: url("../img/angle-down.png") no-repeat;
+                background-position: 97%;
+            }
+			> a {
+				color: #fff;
+				text-transform: uppercase;
+                font-weight: 700;
+                padding: 30px 0;
+                margin: 0 28px;
+                border-bottom: 2px solid transparent;
+
+              &:focus, &:hover, &:active, &:visited {
+					background: transparent;
+              }
+			}
+			&:last-child {
+				> a {
+					padding-right: 0;
+                    @media (min-width: $screen-md-min) {
+                        margin-right: 0;
+                    }
+				}
+			}
+            &.active {
+                @media (max-width: $screen-xs-max) {
+                    background: url("../img/angle-up.png") no-repeat;
+                    background-position-x: 97%;
+                    background-position-y: 26px;
+                }
+                > a {
+                    border-bottom: 2px solid $brand-secondary;
+                    @media (max-width: $screen-xs-max) {
+                        border-bottom: 0;
+                    }
+                }
+                .dropdown {
+                    display: inline-table;
+                    border-top: 1px solid #e1e1e3;
+                    border-bottom: 1px solid #e1e1e3;
+
+                    @media (max-width: $screen-sm-max) {
+                        border: none;
+                    }
+
+                    li {
+                        &:hover {
+                            a, .icon {
+                                color: $orange;
+                            }
+                        }
+                    }
+
+                    @media (min-width: $screen-sm-min) {
+                        opacity: 1;
+                    }
+                }
+            }
+		}
+        @media (max-width: $screen-xs-max) {
+            > li > a {
+                padding: 20px 20px;
+                margin: 0;
+            }
+        }
+	}
+
+	.navbar-brand {
+		background: url("../img/logo-brightergy-sprite.png") no-repeat bottom;
+		width: 189px;
+		height: 30px;
+		display: block;
+		font-size: 0;
+		margin: 27px 0 23px;
+	}
+    .hamburger-bar {
+        width: 20px;
+        height: 3px;
+        display: block;
+        margin: 0 0 3px;
+    }
+
+	&.has-bg {
+        background-color: #fff;
+        //background: rgba(255,255,255,0.95);
+
+        /*@include transition-property(background-color);
+        @include transition-duration(.2s);*/
+
+		border-color: $gray-lighter;
+		.navbar-brand {
+			background: url("../img/logo-brightergy-sprite.png") no-repeat top;
+            @media (max-width: $screen-xs-max) {
+                background-position: top left !important;
+            }
+		}
+		.navbar-nav > li > a {
+			color: $text-color;
+		}
+        .hamburger-bar {
+            background: $text-color;
+        }
+	}
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        overflow: auto;
+        left: 0;
+        background: #fff;
+        background: rgba(255,255,255,1);
+        /*@include box-shadow(0 2px 4px 0px rgba(0,0,0,.3));*/
+
+        @media (min-width: $screen-sm-min) {
+            display: block;
+            height: 0;
+            opacity: 0;
+        }
+
+        li > a {
+            color: $text-color;
+            padding-left: 0;
+            padding-right: 0;
+            letter-spacing: 0;
+            white-space: nowrap;
+            @media (max-width: $screen-sm-max) {
+                white-space: normal;
+            }
+            &:hover {
+                background: none;
+            }
+            .icon {
+                color: $gray-light;
+                font-size: 35px;
+                margin-left: -5px;
+                margin-right: 20px;
+                vertical-align: text-top;
+            }
+        }
+        .heading {
+            margin: 5px 0 30px;
+        }
+        .has-lseperator {
+            border-left: 1px solid #e1e1e3;
+            @media (max-width: $screen-xs-max) {
+                border-left: 0;
+            }
+        }
+        .column {
+            padding-top: 20px;
+            padding-bottom: 40px;
+            padding-left: $grid-gutter-width;
+            padding-right: 0;
+            &:first-child {
+                padding-left: 0;
+            }
+            @media (max-width: $screen-xs-max) {
+                padding-left: 0 !important;
+                padding-bottom: 0 !important;
+            }
+        }
+        .logo {
+            @media (max-width: $screen-xs-max) {
+                margin: 0;
+            }
+        }
+        .more {
+            font-weight: 700;
+            text-align: center;
+            margin: 40px 0;
+        }
+        @media (max-width: $screen-xs-max) {
+            position: static;
+            padding: 20px 20px;
+            background-color: $gray-lighter;
+            .heading {
+                margin: 5px 0 10px;
+            }
+        }
+    }
+    .grid-clients {
+        width: 100%;
+        .client-box {
+            @media (max-width: $screen-xs-max) {
+                width: 50%;
+                height: 140px;
+                &:after {
+                    content: '';
+                    background: $gray-lighter;
+                }
+                .mask {
+                    padding: 25px 10px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .brg-navbar-collapse {
+        @media (max-width: $screen-sm-max) {
+            margin: 0 -30px !important;
+        }
+        .dropdown {
+            -webkit-transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+            transition: all 500ms ease;
+
+            //@include transition-property (opacity,transform);
+            /*@include transform(translate3d(0,-8px,0));*/
+            //@include transition-duration(.2s);
+        }
+    }
+    .brg-navbar-collapse.animate {
+        .active > .dropdown {
+            //@include box-shadow(0 2px 5px 0 rgba(0,0,0,.1));
+            /*@include transform(translate3d(0,0,0));*/
+        }
+    }
+}
+.navbar-toggle {
+    margin-top: 23px;
+}
+
+.nav>li>a:hover, .nav>li>a:focus, .nav>li>a:active {
+  background: transparent !important;
+}
